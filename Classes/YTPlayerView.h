@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @class YTPlayerView;
 
@@ -138,9 +139,9 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  * YTPlayerView::loadWithPlaylistId: or their variants to set the video or playlist
  * to populate the view with.
  */
-@interface YTPlayerView : UIView<UIWebViewDelegate>
+@interface YTPlayerView : UIView<WKNavigationDelegate>
 
-@property(nonatomic, strong, nullable, readonly) UIWebView *webView;
+@property(nonatomic, strong, nullable, readonly) WKWebView *webView;
 
 /** A delegate to be notified on playback events. */
 @property(nonatomic, weak, nullable) id<YTPlayerViewDelegate> delegate;
@@ -511,7 +512,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return An integer value between 0 and 100 representing the current volume.
  */
-- (float)playbackRate;
+- (void)playbackRate:(void (^ _Nullable)(float rate, NSError * _Nullable error))completionHandler;
 
 /**
  * Sets the playback rate. The default value is 1.0, which represents a video
@@ -534,7 +535,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return An NSArray containing available playback rates. nil if there is an error.
  */
-- (nullable NSArray *)availablePlaybackRates;
+- (void)availablePlaybackRates:(void (^ _Nullable)(NSArray* _Nullable res, NSError * _Nullable error))completionHandler;
 
 #pragma mark - Setting playback behavior for playlists
 
@@ -571,7 +572,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  * @return A float value between 0 and 1 representing the percentage of the video
  *         already loaded.
  */
-- (float)videoLoadedFraction;
+- (void)videoLoadedFraction:(void (^ _Nullable)(float, NSError * _Nullable error))completionHandler;
 
 /**
  * Returns the state of the player. This method corresponds to the
@@ -580,7 +581,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return |YTPlayerState| representing the state of the player.
  */
-- (YTPlayerState)playerState;
+- (void)playerState:(void (^ _Nullable)(YTPlayerState, NSError * _Nullable error))completionHandler;
 
 /**
  * Returns the elapsed time in seconds since the video started playing. This
@@ -589,7 +590,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return Time in seconds since the video started playing.
  */
-- (float)currentTime;
+- (void)currentTime:(void (^ _Nullable)(float, NSError * _Nullable error))completionHandler ;
 
 #pragma mark - Playback quality
 
@@ -604,7 +605,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return YTPlaybackQuality representing the current playback quality.
  */
-- (YTPlaybackQuality)playbackQuality;
+- (void)playbackQuality:(void (^ _Nullable)(YTPlaybackQuality, NSError * _Nullable error))completionHandler;
 
 /**
  * Suggests playback quality for the video. It is recommended to leave this setting to
@@ -623,7 +624,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return An NSArray containing available playback quality levels. Returns nil if there is an error.
  */
-- (nullable NSArray *)availableQualityLevels;
+- (void)availableQualityLevels:(void (^ _Nullable)(NSArray * _Nullable, NSError * _Nullable error))completionHandler;
 
 #pragma mark - Retrieving video information
 
@@ -638,7 +639,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return Length of the video in seconds.
  */
-- (NSTimeInterval)duration;
+- (void)duration:(void (^ _Nullable)(NSTimeInterval, NSError * _Nullable error))completionHandler;
 
 /**
  * Returns the YouTube.com URL for the video. This method corresponds
@@ -647,7 +648,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return The YouTube.com URL for the video. Returns nil if no video is loaded yet.
  */
-- (nullable NSURL *)videoUrl;
+- (void)videoUrl:(void (^ _Nullable)(NSURL * _Nullable, NSError * _Nullable error))completionHandler ;
 
 /**
  * Returns the embed code for the current video. This method corresponds
@@ -656,7 +657,7 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  *
  * @return The embed code for the current video. Returns nil if no video is loaded yet.
  */
-- (nullable NSString *)videoEmbedCode;
+- (void)videoEmbedCode:(void (^ _Nullable)(NSString* _Nullable, NSError * _Nullable error))completionHandler ;
 
 #pragma mark - Retrieving playlist information
 
