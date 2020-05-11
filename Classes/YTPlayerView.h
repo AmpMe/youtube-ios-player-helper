@@ -151,8 +151,8 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  * This is a convenience method for calling YTPlayerView::loadPlayerWithVideoId:withPlayerVars:
  * without player variables.
  *
- * This method reloads the entire contents of the UIWebView and regenerates its HTML contents.
- * To change the currently loaded video without reloading the entire UIWebView, use the
+ * This method reloads the entire contents of the webview and regenerates its HTML contents.
+ * To change the currently loaded video without reloading the entire webview, use the
  * YTPlayerView::cueVideoById:startSeconds:suggestedQuality: family of methods.
  *
  * @param videoId The YouTube video ID of the video to load in the player view.
@@ -165,8 +165,8 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  * This is a convenience method for calling YTPlayerView::loadWithPlaylistId:withPlayerVars:
  * without player variables.
  *
- * This method reloads the entire contents of the UIWebView and regenerates its HTML contents.
- * To change the currently loaded video without reloading the entire UIWebView, use the
+ * This method reloads the entire contents of the webview and regenerates its HTML contents.
+ * To change the currently loaded video without reloading the entire webview, use the
  * YTPlayerView::cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:
  * family of methods.
  *
@@ -188,8 +188,8 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  * both strings and integers are valid values. The full list of parameters is defined at:
  *   https://developers.google.com/youtube/player_parameters?playerVersion=HTML5.
  *
- * This method reloads the entire contents of the UIWebView and regenerates its HTML contents.
- * To change the currently loaded video without reloading the entire UIWebView, use the
+ * This method reloads the entire contents of the webview and regenerates its HTML contents.
+ * To change the currently loaded video without reloading the entire webview, use the
  * YTPlayerView::cueVideoById:startSeconds:suggestedQuality: family of methods.
  *
  * @param videoId The YouTube video ID of the video to load in the player view.
@@ -211,8 +211,8 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  * both strings and integers are valid values. The full list of parameters is defined at:
  *   https://developers.google.com/youtube/player_parameters?playerVersion=HTML5.
  *
- * This method reloads the entire contents of the UIWebView and regenerates its HTML contents.
- * To change the currently loaded video without reloading the entire UIWebView, use the
+ * This method reloads the entire contents of the webview and regenerates its HTML contents.
+ * To change the currently loaded video without reloading the entire webview, use the
  * YTPlayerView::cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:
  * family of methods.
  *

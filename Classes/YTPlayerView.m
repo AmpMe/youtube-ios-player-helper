@@ -540,7 +540,7 @@ NSString static *const kYTPlayerSyndicationRegexPattern = @"^https://tpc.googles
 /**
  * Private method to handle "navigation" to a callback URL of the format
  * ytplayer://action?data=someData
- * This is how the UIWebView communicates with the containing Objective-C code.
+ * This is how the webview communicates with the containing Objective-C code.
  * Side effects of this method are that it calls methods on this class's delegate.
  *
  * @param url A URL of the format ytplayer://action?data=value.
@@ -621,7 +621,7 @@ NSString static *const kYTPlayerSyndicationRegexPattern = @"^https://tpc.googles
 - (BOOL)handleHttpNavigationToUrl:(NSURL *) url {
   // Usually this means the user has clicked on the YouTube logo or an error message in the
   // player. Most URLs should open in the browser. The only http(s) URL that should open in this
-  // UIWebView is the URL for the embed, which is of the format:
+  // webview is the URL for the embed, which is of the format:
   //     http(s)://www.youtube.com/embed/[VIDEO ID]?[PARAMETERS]
   NSError *error = NULL;
   NSRegularExpression *ytRegex =
